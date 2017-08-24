@@ -6,20 +6,28 @@ IMPROVEMENTS:
  * core: `distinct_property` constraint can set the number of allocations that
    are allowed to share a property value [GH-2942]
  * core: Lost allocations replaced even if part of failed deployment [GH-2961]
+ * core: Placing allocation counts towards placement limit fixing issue where
+   rolling update could remove an unnecessary amount of allocations [GH-3070]
  * api: Redact Vault.Token from AgentSelf response [GH-2988]
+ * cli: node-status displays node version [GH-3002]
  * cli: Add status command with autocomplete [GH-3047]
+ * cli: Disable color output when STDOUT is not a TTY [GH-3057]
+ * cli: Add autocomplete functionality for flags for all CLI command [GH 3087]
  * client: Unmount task directories when alloc is terminal [GH-3006]
  * client/template: Allow template to set Vault grace [GH-2947]
  * client/template: Template emits events explaining why it is blocked [GH-3001]
  * deployment: Emit task events explaining unhealthy allocations[GH-3025]
  * deployment: Better description when a deployment should auto-revert but there
    is no target [GH-3024]
+ * discovery: Add HTTP header and method support to checks [GH-3031]
  * driver/docker: Added DNS options [GH-2992]
+ * driver/docker: Add mount options for volumes [GH-3021]
  * driver/rkt: support read-only volume mounts [GH-2883]
  * jobspec: Add `shutdown_delay` so tasks can delay shutdown after
    deregistering from Consul [GH-3043]
 
 BUG FIXES:
+ * core: Fix purging of job versions [GH-3056]
  * core: Fix race creating EvalFuture [GH-3051]
  * core: Fix panic occuring from improper bitmap size [GH-3023]
  * core: Fix restoration of parameterized, periodic jobs [GH-2959]
@@ -27,6 +35,9 @@ BUG FIXES:
    [GH-2939]
  * cli: Fix autocmpleting global flags [GH-2928]
  * cli: Fix panic when using 0.6.0 cli with an older cluster [GH-2929]
+ * client: Fix `LC_ALL=C` being set on subprocesses [GH-3041]
+ * client/networking: Handle interfaces that only have link-local addresses
+   while prefering globally routable addresses [GH-3089]
  * deployment: Fix alloc health with services/checks using interpolation
    [GH-2984]
  * discovery: Fix timeout validation for script checks [GH-3022]
